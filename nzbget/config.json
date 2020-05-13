@@ -1,6 +1,6 @@
 {
   "name": "Nzbget",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "slug": "nzbget_docker",
   "description": "The most efficient usenet downloader.",
   "url": "https://github.com/marcelveldt/hassio-addons-repo/nzbget",
