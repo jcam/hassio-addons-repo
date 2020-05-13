@@ -1,5 +1,3 @@
-# Changelog
-
 ## [1.0.3]
 - Fix the web interface not working correctly in Ingress.
 
