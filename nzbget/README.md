@@ -1,16 +1,15 @@
-# Marcelveldt's Hassio Add-ons: Nzbget
+# Marcelveldt's Home Assistant Add-ons: Nzbget
 
 ## About
 
-Nzbget add-on based on the prebuilt docker image from linuxserver.
 Nzbget is a usenet downloader, written in C++ and designed with performance in mind to achieve maximum download speed by using very little system resources.
 
 ## Installation
 
 The installation of this add-on is pretty straightforward and not different in
-comparison to installing any other Hass.io add-on.
+comparison to installing any other add-on.
 
-1. [Add my Hass.io add-ons repository][repository] to your Hass.io instance.
+1. [Add my Add-ons repository][repository] to your Home Assistant instance.
 1. Install this add-on.
 1. Click the `Save` button to store your configuration.
 1. Start the add-on.
@@ -21,11 +20,9 @@ comparison to installing any other Hass.io add-on.
 
 ## Configuration
 
-Webui can be found at <your-ip>:6789 and the default login details (change ASAP) are
+The addon is configured with Ingress support, meaning that security and authentication is handled by Home Assistant. Use the Web UI button to start configuring.
 
-`login`:nzbget, `password`:tegbzn6789
-
-By default hassio folders backup, share and ssl are available within nzbget.
-You can use the share folder to access your media files.
+By default the folders *backup* and *share* are available within the application.
+You can use the share folder to store/access your media files.
 
 [repository]: https://github.com/marcelveldt/hassio-addons-repo

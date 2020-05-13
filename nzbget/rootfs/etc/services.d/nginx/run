@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Runs the Nginx daemon
+# ==============================================================================
+
+# Wait for app to become available
+bashio::net.wait_for 46836 localhost 300
+
+bashio::log.info "Starting NGinx..."
+exec nginx

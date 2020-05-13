@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Runs app
+# ==============================================================================
+declare -a options
+
+options+=(-s)
+options+=(-c "${APP_CONF_PATH}")
+options+=(-o "OutputMode=log")
+options+=(-o "ControlPort=46836")
+options+=(-o "ControlUsername=")
+options+=(-o "ControlPassword=")
+
+bashio::log.info "Starting ${APP_NAME}..."
+
+exec "${APP_BIN_PATH}" "${options[@]}"
