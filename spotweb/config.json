@@ -1,6 +1,6 @@
 {
   "name": "Spotweb",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "slug": "spotweb_docker",
   "description": "Spotweb is a decentralized usenet community based on the Spotnet protocol.",
   "url": "https://github.com/marcelveldt/hassio-addons-repo/spotweb",
