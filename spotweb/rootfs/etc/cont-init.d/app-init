@@ -32,7 +32,7 @@ bashio::log.info "${APP_NAME} is using the Maria DB addon as MySQL database."
 mysql \
     -u "${mysql_user}" -p"${mysql_pass}" \
     -h "${mysql_host}" -P "${mysql_port}" \
-    -e "CREATE DATABASE IF NOT EXISTS \'${mysql_db}\' ;"
+    -e "CREATE DATABASE IF NOT EXISTS ${mysql_db};"
 
 # write db config file
 cat >/app/dbsettings.inc.php <<EOL
