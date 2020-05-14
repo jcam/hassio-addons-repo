@@ -50,16 +50,20 @@ if [ "$RESULT" == "$mysql_db" ]; then
     # run retrieval once at startup
     php /app/retrieve.php || true
 else
-    # first login: set systemtype to public (as we're behind ingress)
-    # we also set some sane default settings
+    # database does not yet exist
     bashio::log.info "Creating database with default settings...."
+    mysql \
+        -u "${mysql_user}" -p"${mysql_pass}" \
+        -h "${mysql_host}" -P "${mysql_port}" \
+        -e "CREATE DATABASE ${mysql_db};"
+    # set systemtype to public (as we're behind ingress)
     php /app/bin/upgrade-db.php --set-systemtype public
+    # we also set some sane default settings
     mysql \
         -u "${mysql_user}" -p"${mysql_pass}" \
         -h "${mysql_host}" -P "${mysql_port}" \
         -D "${mysql_db}" \
-        -e "CREATE DATABASE ${mysql_db}; \
-            REPLACE INTO usergroups(userid, groupid) VALUES (1, 2); \
+        -e "REPLACE INTO usergroups(userid, groupid) VALUES (1, 2); \
             REPLACE INTO usergroups(userid, groupid) VALUES (1, 3); \
             REPLACE INTO usergroups(userid, groupid) VALUES (1, 4); \
             REPLACE INTO usergroups(userid, groupid) VALUES (1, 5); \

@@ -1,3 +1,3 @@
-## [1.0.3]
+## [1.0.5]
 - Complete refactor using s6-overlay and Home Assistant Add-on templates
 - Switched web interface to Ingress only
