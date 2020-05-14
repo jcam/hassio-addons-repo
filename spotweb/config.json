@@ -1,27 +1,23 @@
 {
   "name": "Spotweb",
-  "version": "225",
+  "version": "1.0.1",
   "slug": "spotweb_docker",
-  "description": "Spotweb add-on based on erikdevries/spotweb",
-  "startup": "services",
+  "description": "Spotweb is a decentralized usenet community based on the Spotnet protocol.",
+  "url": "https://github.com/marcelveldt/hassio-addons-repo/spotweb",
+  "startup": "application",
   "boot": "auto",
   "arch": [
-    "amd64"
+    "aarch64",
+    "amd64",
+    "armhf",
+    "armv7",
+    "i386"
   ],
-  "ports": {
-    "80/tcp": 81
-  },
-  "map": ["share:rw"],
-  "webui": "http://[HOST]:[PORT:81]",
-  "environment": {
-    "DB_HOST": "core-mariadb",
-    "DB_PORT": "3306",
-    "DB_NAME": "spotweb",
-    "DB_USER": "spotweb",
-    "DB_PASS": "spotweb"
-  },
-  "boot": "auto",
   "schema": {},
   "options": {},
-  "image":"erikdevries/spotweb"
+  "services": ["mysql:need"],
+  "hassio_api": true,
+  "hassio_role": "default",
+  "ingress": true,
+  "ingress_port": 8099
 }

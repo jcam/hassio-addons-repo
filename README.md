@@ -8,7 +8,7 @@ I created this repo to store the addons I use and/or created myself but as some 
 
 ## Installation
 
-Adding this add-ons repository to your Hass.io Home Assistant instance is
+Adding this add-ons repository to your Home Assistant supervisor is
 pretty easy. Follow [the official instructions][third-party-addons] on the
 website of Home Assistant, and use the following URL:
 

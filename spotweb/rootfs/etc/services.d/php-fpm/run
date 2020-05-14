@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Runs the PHP-FPM daemon
+# ==============================================================================
+bashio::log.info "Starting PHP-FPM..."
+
+exec php-fpm7 --nodaemonize
