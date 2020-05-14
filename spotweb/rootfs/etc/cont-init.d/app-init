@@ -44,7 +44,7 @@ if [ "$RESULT" == "$mysql_db" ]; then
     # database already exists, do healthcheck with upgrade-db
     php /app/bin/upgrade-db.php>/dev/null
     # run retrieval once at startup
-    php /app/retrieve.php || true
+    php /app/retrieve.php>/dev/null
 else
     # database does not yet exist
     bashio::log.info "Creating database with default settings...."
