@@ -62,6 +62,8 @@ if ! bashio::fs.file_exists "/data/firstlogin"; then
 else
     # upgrade the db if needed
     php /app/bin/upgrade-db.php
+    # run retrieval once at startup
+    php /app/retrieve.php || true
 fi
 
 
