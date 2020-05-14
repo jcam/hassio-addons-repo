@@ -56,6 +56,8 @@ else
         -u "${mysql_user}" -p"${mysql_pass}" \
         -h "${mysql_host}" -P "${mysql_port}" \
         -e "CREATE DATABASE ${mysql_db};"
+    # init database with default values
+    php /app/bin/upgrade-db.php
     # set systemtype to public (as we're behind ingress)
     php /app/bin/upgrade-db.php --set-systemtype public
     # we also set some sane default settings
