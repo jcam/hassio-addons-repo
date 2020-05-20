@@ -22,7 +22,7 @@ comparison to installing any other add-on.
 
 The addon is configured with Ingress support, meaning that security and authentication is handled by Home Assistant. Use the Web UI button to start configuring.
 
-By default the folders *backup* and *share* are available within the application.
+By default the folders */backup* and */share* are available within the application.
 You can use the share folder to store/access your media files.
 
 [repository]: https://github.com/marcelveldt/hassio-addons-repo

@@ -29,7 +29,7 @@ A database and user will be auto created if the MariaDB addon is detected.
 1. Check the logs of the add-on to see if everything went well.
 1. Carefully configure the add-on to your preferences, see the official documentation for for that.
 
-Thanks to Ingress support, security and authantication is handled by Home Assistant. Therefore authentication in Spotweb is disabled by default. Spotweb is ready to use after installation through Ingress WebUI.
+Thanks to Ingress support, security and authentication is handled by Home Assistant. Therefore authentication in Spotweb is disabled by default. Spotweb is ready to use after installation through Ingress WebUI.
 
 Spots are retrieved every hour by a background task. 
 Restart the addon after entering your credentials to force the first sync of spots.
