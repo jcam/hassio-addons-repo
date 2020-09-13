@@ -5,14 +5,8 @@
 # ==============================================================================
 
 
-# Install latest version from GIT
+# Install latest version from PyPi
 if bashio::config.true 'use_nightly'; then
-    bashio::log.green "Updating to latest GIT version..."
-    cd /tmp
-    curl https://github.com/marcelveldt/musicassistant/archive/master.zip -LOk
-    unzip master.zip
-    cd /tmp/musicassistant-master
-    python3 setup.py install
-    rm -rf musicassistant-master/ && \
-    rm -f master.zip
+    bashio::log.green "Updating to latest (prerelease) version..."
+    pip install --upgrade --pre music-assistant
 fi

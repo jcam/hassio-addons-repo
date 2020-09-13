@@ -2,7 +2,7 @@ FROM python:slim
 
 # Build arguments
 ARG BUILD_ARCH=amd64
-ARG BUILD_VERSION=0.0.26
+ARG BUILD_VERSION=0.0.28
 ARG BUILD_DATE
 ARG BUILD_REF
 ARG MASS_VERSION="${BUILD_VERSION}"
@@ -15,13 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		wget bash jq flac sox libsox-fmt-mp3 zip curl unzip ffmpeg libsndfile1 libtag1v5 \
 		# build packages
 		libtag1-dev build-essential git && \
-    # make sure aiohttp is installed with recommended packages
-    pip install aiohttp[speedups] && \
-	# install musicassistant - TODO: use pypi package once we're stable
-	curl -L -s https://github.com/marcelveldt/musicassistant/archive/${MASS_VERSION}.tar.gz | tar -xzf - -C /tmp && \
-    cd /tmp/musicassistant-${MASS_VERSION} && \
-    python3 setup.py install && \
-    rm -rf /tmp/musicassistant-${MASS_VERSION} && \
+    # make sure uvloop and aiohttp is installed with recommended packages
+    pip install --upgrade uvloop aiohttp[speedups] && \
     # Setup jemalloc
     curl -L -s https://github.com/jemalloc/jemalloc/releases/download/${JEMALLOC_VERSION}/jemalloc-${JEMALLOC_VERSION}.tar.bz2 | tar -xjf - -C /usr/src && \
     cd /usr/src/jemalloc-${JEMALLOC_VERSION} && \
@@ -39,6 +34,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     mv /tmp/bashio/lib /usr/lib/bashio && \
     ln -s /usr/lib/bashio/bashio /usr/bin/bashio && \
     rm -rf /tmp/bashio && \
+    # install music assistant
+    pip install --upgrade music-assistant==${MASS_VERSION} && \
 	# cleanup build packages
 	apt-get purge -y --auto-remove libtag1-dev build-essential && \
 	rm -rf /var/lib/apt/lists/*
@@ -60,8 +57,8 @@ LABEL \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="MusicAssistant" \
     org.label-schema.schema-version="1.0" \
-    org.label-schema.url="https://github.com/marcelveldt/musicassistant" \
-    org.label-schema.usage="https://github.com/marcelveldt/musicassistant/tree/master/README.md" \
+    org.label-schema.url="https://music-assistant.github.io" \
+    org.label-schema.usage="https://github.com/music-assistant/server/tree/master/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
-    org.label-schema.vcs-url="https://github.com/marcelveldt/musicassistant" \
+    org.label-schema.vcs-url="https://music-assistant.github.io" \
     org.label-schema.vendor="Marcelveldt's Add-ons for Home Assistant"
