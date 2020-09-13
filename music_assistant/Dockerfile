@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ln -s /usr/lib/bashio/bashio /usr/bin/bashio && \
     rm -rf /tmp/bashio && \
     # install music assistant
-    pip install --upgrade music-assistant==${MASS_VERSION} && \
+    cd /tmp && pip install --upgrade music-assistant==${MASS_VERSION} && \
 	# cleanup build packages
 	apt-get purge -y --auto-remove libtag1-dev build-essential && \
 	rm -rf /var/lib/apt/lists/*
