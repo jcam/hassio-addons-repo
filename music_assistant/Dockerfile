@@ -7,14 +7,14 @@ ARG BUILD_DATE
 ARG BUILD_REF
 ARG MASS_VERSION="${BUILD_VERSION}"
 ARG JEMALLOC_VERSION=5.2.1
-ARG S6_OVERLAY_VERSION=1.22.1.0
+ARG S6_OVERLAY_VERSION=2.1.0.2
 ARG BASHIO_VERSION=0.9.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		# required packages
 		wget bash jq flac sox libsox-fmt-mp3 zip curl unzip ffmpeg libsndfile1 libtag1v5 \
 		# build packages
-		libtag1-dev build-essential git && \
+		libtag1-dev build-essential git libblas3 liblapack3 liblapack-dev libblas-dev gfortran libatlas-base-dev && \
     # make sure uvloop and aiohttp is installed with recommended packages
     pip install --upgrade uvloop aiohttp[speedups] && \
     # Setup jemalloc
@@ -37,7 +37,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # install music assistant
     cd /tmp && pip install --upgrade music-assistant==${MASS_VERSION} && \
 	# cleanup build packages
-	apt-get purge -y --auto-remove libtag1-dev build-essential && \
+	apt-get purge -y --auto-remove libtag1-dev build-essential libblas3 liblapack3 liblapack-dev libblas-dev gfortran libatlas-base-dev && \
 	rm -rf /var/lib/apt/lists/*
 
 # copy rootfs
