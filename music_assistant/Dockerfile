@@ -1,14 +1,17 @@
 ARG MASS_VERSION=0.0.60
-ARG BASHIO_VERSION=0.9.0
 
 FROM marcelveldt/music-assistant:${MASS_VERSION}
 
+ARG BASHIO_VERSION=0.9.0
+
 # Setup bashio
-RUN mkdir -p /tmp/bashio && \
-    curl -L -s https://github.com/hassio-addons/bashio/archive/v${BASHIO_VERSION}.tar.gz | tar -xzf - --strip 1 -C /tmp/bashio && \
-    mv /tmp/bashio/lib /usr/lib/bashio && \
-    ln -s /usr/lib/bashio/bashio /usr/bin/bashio && \
-    rm -rf /tmp/bashio
+RUN set -x \
+    && mkdir -p /tmp/bashio \
+    && curl -L -f -s "https://github.com/hassio-addons/bashio/archive/v${BASHIO_VERSION}.tar.gz" \
+        | tar -xzf - --strip 1 -C /tmp/bashio \
+    && mv /tmp/bashio/lib /usr/lib/bashio \
+    && ln -s /usr/lib/bashio/bashio /usr/bin/bashio \
+    && rm -rf /tmp/bashio
 
 # copy rootfs
 COPY rootfs /
