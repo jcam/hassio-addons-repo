@@ -1,7 +1,6 @@
-ARG MASS_VERSION=0.0.60
 ARG BASHIO_VERSION=0.9.0
 
-FROM marcelveldt:musicassistant:"${MASS_VERSION}"
+FROM marcelveldt:music-assistant:${MASS_VERSION}
 
 # Setup bashio
 RUN mkdir -p /tmp/bashio && \
@@ -17,7 +16,7 @@ LABEL \
     io.hass.name="music_assistant" \
     io.hass.description="Multi-room, multi-platform streaming media organizer and streamer" \
     io.hass.type="addon" \
-    io.hass.version=${MASS_VERSION} \
+    io.hass.version=${BUILD_VERSION} \
     maintainer="Marcel van der Veldt <m.vanderveldt@outlook.com>" \
     org.label-schema.description="Multi-room, multi-platform streaming media organizer and streamer" \
     org.label-schema.name="MusicAssistant" \
