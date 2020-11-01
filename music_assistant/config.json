@@ -11,11 +11,12 @@
   "webui": "http://[HOST]:[PORT:8095]",
   "tmpfs": "size=64m",
   "host_network": true,
-  "environment": {},
+  "environment": {
+  },
   "homeassistant_api": true,
   "ingress": true,
   "ingress_port": 8095,
-  "panel_icon": "mdi:library-music",
+  "panel_icon": "mdi:music-box-multiple",
   "options": {
     "debug_messages": false,
     "use_nightly": false
