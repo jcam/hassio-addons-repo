@@ -18,7 +18,7 @@ RUN set -x \
     # set permissions
     && chmod +x /run.sh
 
-ENTRYPOINT [ "run.sh" ]
+ENTRYPOINT [ "/run.sh" ]
 
 # Labels
 LABEL \
