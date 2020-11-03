@@ -1,3 +1,4 @@
+ARG BUILD_VERSION
 FROM marcelveldt/music-assistant:${BUILD_VERSION}
 
 ARG BASHIO_VERSION=0.9.0
@@ -21,13 +22,13 @@ ENTRYPOINT [ "run.sh" ]
 
 # Labels
 LABEL \
-    io.hass.name="music_assistant" \
+    io.hass.name="Music Assistant" \
     io.hass.description="Multi-room, multi-platform streaming media organizer and streamer" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
     maintainer="Marcel van der Veldt <m.vanderveldt@outlook.com>" \
     org.label-schema.description="Multi-room, multi-platform streaming media organizer and streamer" \
-    org.label-schema.name="MusicAssistant" \
+    org.label-schema.name="Music Assistant" \
     org.label-schema.schema-version="1.0" \
     org.label-schema.url="https://music-assistant.github.io" \
     org.label-schema.usage="https://github.com/music-assistant/server/tree/master/README.md" \
