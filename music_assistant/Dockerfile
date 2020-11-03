@@ -1,26 +1,30 @@
-ARG MASS_VERSION=0.0.60
-
-FROM marcelveldt/music-assistant:${MASS_VERSION}
+FROM marcelveldt/music-assistant:${BUILD_VERSION}
 
 ARG BASHIO_VERSION=0.9.0
+COPY run.sh /
 
-# Setup bashio
 RUN set -x \
+    # install bash \
+    && apk update \
+    && apk add --no-cache bash \
+    # install bashio
     && mkdir -p /tmp/bashio \
     && curl -L -f -s "https://github.com/hassio-addons/bashio/archive/v${BASHIO_VERSION}.tar.gz" \
         | tar -xzf - --strip 1 -C /tmp/bashio \
     && mv /tmp/bashio/lib /usr/lib/bashio \
     && ln -s /usr/lib/bashio/bashio /usr/bin/bashio \
-    && rm -rf /tmp/bashio
+    && rm -rf /tmp/bashio \
+    # set permissions
+    && chmod +x /run.sh
 
-# copy rootfs
-COPY rootfs /
+ENTRYPOINT [ "run.sh" ]
+
 # Labels
 LABEL \
     io.hass.name="music_assistant" \
     io.hass.description="Multi-room, multi-platform streaming media organizer and streamer" \
     io.hass.type="addon" \
-    io.hass.version=${MASS_VERSION} \
+    io.hass.version=${BUILD_VERSION} \
     maintainer="Marcel van der Veldt <m.vanderveldt@outlook.com>" \
     org.label-schema.description="Multi-room, multi-platform streaming media organizer and streamer" \
     org.label-schema.name="MusicAssistant" \
