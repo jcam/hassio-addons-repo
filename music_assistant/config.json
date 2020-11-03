@@ -8,21 +8,16 @@
   "boot": "auto",
   "arch": ["amd64", "armhf", "armv7", "aarch64"],
   "map": ["share:rw","ssl","config:rw"],
-  "webui": "http://[HOST]:[PORT:8095]",
+  "webui": "https://music-assistant.github.io/app",
   "tmpfs": "size=64m",
   "host_network": true,
   "environment": {
   },
   "homeassistant_api": true,
-  "ingress": true,
-  "ingress_port": 8095,
   "panel_icon": "mdi:music-box-multiple",
   "options": {
-    "debug_messages": false,
-    "use_nightly": false
   },
   "schema": {
-    "debug_messages": "bool",
-    "use_nightly": "bool"
-  }
+  },
+  "image": "marcelveldt/music-assistant"
 }
