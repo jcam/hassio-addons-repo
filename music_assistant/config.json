@@ -4,20 +4,19 @@
   "description": "Media library manager for (streaming) media.",
   "url": "https://music-assistant.github.io",
   "slug": "music_assistant",
-  "startup": "application",
+  "startup": "services",
   "boot": "auto",
   "arch": ["amd64", "armhf", "armv7", "aarch64"],
   "map": ["share:rw","ssl","config:rw"],
-  "webui": "https://music-assistant.github.io/app",
+  "webui": "http://[HOST]:[PORT:8095]",
   "tmpfs": "size=64m",
   "host_network": true,
-  "environment": {
-  },
+  "ingress": true,
+  "ingress_port": 8095,
+  "environment": {},
   "homeassistant_api": true,
   "panel_icon": "mdi:music-box-multiple",
-  "options": {
-  },
-  "schema": {
-  },
+  "options": {},
+  "schema": {},
   "image": "marcelveldt/music-assistant"
 }
