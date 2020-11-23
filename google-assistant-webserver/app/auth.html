@@ -74,7 +74,7 @@
           submit () {
             const formData = new FormData()
             formData.append('token', this.token)
-            axios.post('/token', formData)
+            axios.post(window.location + 'token', formData)
                 .then(function (response) {
                 this.success = true
             }.bind(this))

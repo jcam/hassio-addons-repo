@@ -37,7 +37,7 @@
                         <v-btn @click="submitCommand()" class="mr-4">Send command</v-btn>
                         <v-card-actions>
                           <v-spacer></v-spacer>
-                        <a href="/auth">Authenticate</a>
+                        <a @click="openAuth()">Authenticate</a>
                         </v-card-actions>
                     </v-card-text>
                   </v-card>
@@ -61,10 +61,15 @@
         }),
       methods: {
         async submitBroadcast () {
-          const res = await axios.get('/broadcast', { params: { message: this.broadcast } })
+          const res = await axios.get(window.location + 'broadcast', { params: { message: this.broadcast } })
+          alert('Message submitted ' + res.data)
         },
         async submitCommand () {
-          const res = await axios.get('/command', { params: { message: this.command } })
+          const res = await axios.get(window.location + 'command', { params: { message: this.command } })
+          alert('Message submitted ' + res.data)
+        },
+        openAuth () {
+          window.open(window.location + 'auth')
         }
       }
     })

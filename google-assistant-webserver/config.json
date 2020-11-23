@@ -1,6 +1,6 @@
 {
   "name": "Google Assistant Webserver",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Webservice for the Google Assistant SDK - Allow you to send (broadcast) commands to Google Assistant",
   "slug": "google_assistant_webserver",
   "startup": "application",
