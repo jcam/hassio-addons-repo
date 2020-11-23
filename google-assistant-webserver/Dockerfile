@@ -20,4 +20,4 @@ VOLUME [ "/data" ]
 WORKDIR /usr/src/app
 COPY /app /usr/src/app/
 
-CMD "/usr/src/app/main.py"
+CMD [ "python", "/usr/src/app/main.py" ]
