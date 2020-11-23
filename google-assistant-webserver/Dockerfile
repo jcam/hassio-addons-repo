@@ -1,8 +1,23 @@
-FROM andbobsyouruncle/amd64-google-assistant-webserver:0.0.4
+FROM python:3.8-slim
 
-# overwite python files
-COPY *.py /
-COPY client_secrets.json /
-COPY run.sh /
-RUN chmod a+x /run.sh
-ENTRYPOINT [ "/run.sh" ]
+RUN set -x \
+    # Install required system packages
+    && apt-get update && apt-get install -y --no-install-recommends \
+        jq \
+        tzdata \
+        portaudio19-dev \
+        libffi-dev \
+        libssl-dev
+
+# install python packages
+COPY requirements.txt .
+RUN pip install --upgrade -r requirements.txt
+
+EXPOSE 5000/tcp
+
+VOLUME [ "/data" ]
+
+WORKDIR /usr/src/app
+COPY /app /usr/src/app/
+
+CMD "/usr/src/app/assistant.py"

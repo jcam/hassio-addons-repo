@@ -1,0 +1,4 @@
+aiohttp[speedups]
+google-assistant-sdk[samples]
+google-auth-oauthlib[tool]
+uvloop
