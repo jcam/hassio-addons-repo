@@ -29,7 +29,7 @@ Once you've set-up the webserver, you can add the component to HomeAssistant as 
 notify:
   - name: Google Assistant
     platform: rest
-    resource: http://[HASS_IP]:5000/broadcast
+    resource: http://62c7908d_google_assistant_webserver:5000/broadcast
 ```
 
 ### Script component
@@ -39,7 +39,7 @@ notify:
 # define as rest_command in configuration
 rest_command:
   - google_assistant_command:
-      url: 'http://[HASS_IP]:5000/command?message={{ command }}'
+      url: 'http://62c7908d_google_assistant_webserver:5000/command?message={{ command }}'
 
 
 # example usage in script

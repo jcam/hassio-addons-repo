@@ -8,7 +8,6 @@ from aiohttp import web
 from google.oauth2.credentials import Credentials
 from requests_oauthlib import OAuth2Session
 
-routes = web.RouteTableDef()
 
 
 class AuthHandler:
@@ -28,10 +27,10 @@ class AuthHandler:
             self.user_data["auth_uri"], access_type="offline", prompt="consent"
         )
 
-    @routes.get("/token")
     async def token(self, request):
         """Read access token and process it."""
-        token = request.query.get("token")
+        form = await request.post()
+        token = form["token"]
         self.oauth2.fetch_token(
             self.user_data["token_uri"], client_secret=self.user_data["client_secret"], code=token
         )

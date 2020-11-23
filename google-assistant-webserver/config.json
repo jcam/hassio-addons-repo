@@ -1,6 +1,6 @@
 {
   "name": "Google Assistant Webserver",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Webservice for the Google Assistant SDK - Allow you to send (broadcast) commands to Google Assistant",
   "slug": "google_assistant_webserver",
   "startup": "application",
@@ -8,10 +8,10 @@
   "arch": ["armhf", "amd64", "aarch64"],
   "devices": ["/dev/snd:/dev/snd:rwm"],
   "ports": {
-    "5000/tcp": 5000
+    "5000/tcp": null
   },
   "ingress": true,
-  "ingress_port": 8095,
+  "ingress_port": 5000,
   "webui": "http://[HOST]:[PORT:5000]",
   "options": {
   },

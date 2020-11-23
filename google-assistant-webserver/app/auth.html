@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+        <v-main>
+            <v-container fluid fill-height>
+              <v-layout align-center justify-center>
+                <v-flex sm8>
+                  <v-card class="elevation-12">
+                    <v-toolbar dark color="black">
+                      <v-toolbar-title>Authenticate Google Assistant Webserver</v-toolbar-title>
+                      <v-spacer></v-spacer>
+                    </v-toolbar>
+                    <v-card-text>
+                        <h2>Step 1</h2>
+                        <span>In order to use the Google Assistant webserver, you need to authenticate your Google account (once).</span>
+                        <span>Please click the button below to start the authentication process.</span>
+                        <span>Once you received the authentication token, come back to this page to submit it.</span>
+                        <br /><br />
+                        <v-btn @click="this.window.open('[[AUTH_URL]]', '_blank');" class="mr-4">Authenticate</v-btn>
+                        <br /><br />
+                        <h2>Step 2</h2>
+                        <span>Once you received the token, paste it below and click submit.</span>
+
+                        <v-form ref="form" v-model="valid" method="post">
+                        <v-text-field
+                          v-model="token"
+                          prepend-icon="mdi-lock"
+                          name="token"
+                          label="Token"
+                          type="text"
+                          required
+                          :rules="[v => !!v || 'Token is required']"
+                        ></v-text-field>
+                      </v-form>
+                      
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-alert type="success" v-if="success"
+                        >Authentication finished. You can now issue commands to Google Assistant.
+                        </v-alert>
+                      <v-btn type="submit" v-else :disabled="!valid" color="success" @click="submit"
+                      class="mr-4">Submit</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-main>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: () => ({
+            token: '',
+            valid: true,
+            success: false
+        }),
+      methods: {
+          submit () {
+            const formData = new FormData()
+            formData.append('token', this.token)
+            axios.post('/token', formData)
+                .then(function (response) {
+                this.success = true
+            }.bind(this))
+            .catch(function (error) {
+                console.log('error', error)
+            });
+        }
+      }
+    })
+  </script>
+</body>
+</html>

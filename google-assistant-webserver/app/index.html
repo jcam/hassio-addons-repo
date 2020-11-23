@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+        <v-main>
+            <v-container fluid fill-height>
+              <v-layout align-center justify-center>
+                <v-flex sm8>
+                  <v-card class="elevation-12">
+                    <v-toolbar dark color="black">
+                      <v-toolbar-title>Google Assistant Webserver</v-toolbar-title>
+                      <v-spacer></v-spacer>
+                    </v-toolbar>
+                    <v-card-text>
+                        <h2>Broadcast</h2>
+                        <v-text-field
+                          v-model="broadcast"
+                          label="Broadcast message"
+                          type="text"
+                        ></v-text-field>
+                        <v-btn @click="submitBroadcast()" class="mr-4">Send broadcast</v-btn>
+                        <br />
+                        <br />
+                        <h2>Send command</h2>
+                        <v-text-field
+                          v-model="command"
+                          label="Command to send to Google Assistant (e.g. turn off the lights)"
+                          type="text"
+                        ></v-text-field>
+                        <v-btn @click="submitCommand()" class="mr-4">Send command</v-btn>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                        <a href="/auth">Authenticate</a>
+                        </v-card-actions>
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-main>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: () => ({
+            broadcast: '',
+            command: ''
+        }),
+      methods: {
+        async submitBroadcast () {
+          const res = await axios.get('/broadcast', { params: { message: this.broadcast } })
+        },
+        async submitCommand () {
+          const res = await axios.get('/command', { params: { message: this.command } })
+        }
+      }
+    })
+  </script>
+</body>
+</html>
