@@ -7,7 +7,7 @@
   "stage": "experimental",
   "startup": "application",
   "boot": "auto",
-  "arch": ["amd64", "armv6", "armv7", "aarch64"],
+  "arch": ["amd64", "armv7", "aarch64"],
   "map": [],
   "host_network": true,
   "environment": {},
