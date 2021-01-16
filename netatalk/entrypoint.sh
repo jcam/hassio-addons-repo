@@ -19,6 +19,9 @@ force group = root
 [Share]
 path = /share
 valid users = %AFP_USER%
+[Media]
+path = /media
+valid users = %AFP_USER%
 [Addons]
 path = /addons
 valid users = %AFP_USER%
