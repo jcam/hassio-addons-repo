@@ -1,19 +1,15 @@
 #!/bin/bash
 
-rm -rf /usr/src/app
-mkdir /usr/src/app
-cd /tmp
-curl -OL "https://github.com/zwave-js/zwave-js-server/archive/master.zip"
-unzip master.zip
-mv zwave-js-server-master/* /usr/src/app
-rm master.zip
-cd /usr/src/app
-
-# Install app dependencies
-npm install
-
 SERIAL_PORT=$(cat /data/options.json | jq -r '.serial_port')
+SERVER_SOURCE=$(cat /data/options.json | jq -r '.server_branch_or_commit')
+DRIVER_SOURCE=$(cat /data/options.json | jq -r '.driver_branch_or_commit')
 
-echo "using $SERIAL_PORT"
+cd /usr/src/app
+echo "Fetching latest server version from $SERVER_SOURCE..."
+npm install ${SERVER_SOURCE}
+echo "Fetching latest driver version from $DRIVER_SOURCE..."
+npm install ${DRIVER_SOURCE}
 
-ts-node src/bin/server.ts ${SERIAL_PORT} --config /data/options.json
+echo "Start Z-Wave Js Server using $SERIAL_PORT"
+exec ./node_modules/.bin/zwave-server "$SERIAL_PORT"
+
