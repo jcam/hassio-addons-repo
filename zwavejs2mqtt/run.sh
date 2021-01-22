@@ -27,7 +27,6 @@ fi
 jq -c '.zwave.port = "$SERIAL_PORT"' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
 jq -c '.zwave.networkKey = "$NETWORK_KEY"' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
 
-nginx -g 'pid /tmp/nginx.pid;'
 # node bin/www
 
 sh -c "nginx &" && node bin/www
