@@ -6,7 +6,8 @@ WORKDIR /usr/src/app
 RUN apt-get update && \
     apt-get -y install curl unzip jq && \
     npm install -g typescript && \
-    npm install -g ts-node
+    npm install -g ts-node && \
+    npm install zwave-js/zwave-js-server#master
 
 EXPOSE 3000
 

@@ -1,0 +1,30 @@
+{
+  "name": "Z-Wave JS 2 MQTT",
+  "version": "1.0.0-rc.1",
+  "slug": "zwavejs2mqtt",
+  "description": "Fully configurable Zwave to MQTT Gateway and Control Panel.",
+  "url": "https://zwave-js.github.io/zwavejs2mqtt",
+  "startup": "system",
+  "arch": ["aarch64", "amd64", "armhf", "armv7", "i386"],
+  "map": ["config:rw"],
+  "boot": "auto",
+  "options": {
+    "serial_port": "/dev/ttyACM0",
+    "network_key": "",
+    "data_dir": "/data",
+    "use_dev_version": false
+  },
+  "schema": {
+    "serial_port": "str",
+    "network_key": "str",
+    "data_dir": "str",
+    "use_dev_version": "bool"
+  },
+  "ingress": true,
+  "ingress_port": 8091,
+  "ports": {
+    "3000/tcp": 3000,
+    "8091/tcp": 8091
+  },
+  "auto_uart": true
+}

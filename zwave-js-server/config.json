@@ -1,6 +1,6 @@
 {
   "name": "Z-Wave JS Server DEVELOPMENT",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "slug": "zwave_js_server",
   "description": "Not for production purposes, use at your own risk. Will grab latest version from Zwave JS server directly from Github master.",
   "url": "https://github.com/zwave-js/zwave-js-server",
@@ -12,7 +12,6 @@
     "branch_or_commit": "zwave-js/zwave-js-server#master",
     "serial_port": "/dev/ttyACM0",
     "networkKey": "",
-    "use_zwjs2mqtt_control_panel": false,
     "storage": {
       "cacheDir": "/config/.zwjs"
     }
@@ -21,16 +20,12 @@
     "branch_or_commit": "str",
     "serial_port": "str",
     "networkKey": "str",
-    "use_zwjs2mqtt_control_panel": "bool",
     "storage": {
       "cacheDir": "str"
     }
   },
-  "ingress": true,
-  "ingress_port": 8091,
   "ports": {
-    "3000/tcp": 3000,
-    "8091/tcp": 8091
+    "3000/tcp": 3000
   },
   "auto_uart": true
 }
