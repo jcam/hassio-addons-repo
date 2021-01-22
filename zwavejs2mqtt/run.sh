@@ -24,8 +24,8 @@ if [ ! -f "/data/settings.json" ]; then
     mv /default_settings.json /data/settings.json
 fi
 # update config
-jq -c '.zwave.port = ${SERIAL_PORT}' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
-jq -c '.zwave.networkKey = ${NETWORK_KEY}' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
+jq -c '.zwave.port = "${SERIAL_PORT}"' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
+jq -c '.zwave.networkKey = "${NETWORK_KEY}"' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
 
 # node bin/www
 
