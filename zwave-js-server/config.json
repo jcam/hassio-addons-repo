@@ -1,6 +1,6 @@
 {
   "name": "Z-Wave JS Server DEVELOPMENT",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "slug": "zwave_js_server",
   "description": "Not for production purposes, use at your own risk. Will grab latest version from Zwave JS server directly from Github master.",
   "url": "https://github.com/zwave-js/zwave-js-server",

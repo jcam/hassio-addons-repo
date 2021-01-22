@@ -14,7 +14,8 @@ if [ "$USE_ZWJS2MQTT" = "true" ]; then
     echo "Start Zwave JS 2 MQTT..."
     export NETWORK_KEY=$NETWORK_KEY
     export STORE_DIR=$CACHEDIR
-    npm install zwave-js/zwavejs2mqtt
+    npm install zwave-js/zwavejs2mqtt#master
+    npm run build
     exec ./node_modules/.bin/zwavejs2mqtt
 else
     echo "Start Z-Wave Js Server using $SERIAL_PORT"
