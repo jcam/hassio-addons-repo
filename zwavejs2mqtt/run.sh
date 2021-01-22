@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 SERIAL_PORT=$(cat /data/options.json | jq -r '.serial_port')
 NETWORK_KEY=$(cat /data/options.json | jq -r '.network_key')
