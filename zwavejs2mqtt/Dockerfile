@@ -2,7 +2,7 @@ ARG BUILD_VERSION
 FROM zwavejs/zwavejs2mqtt:$BUILD_VERSION
 
 RUN apk update && \
-    apk add jq
+    apk add --no-cache jq
 
 ADD run.sh /
-ENTRYPOINT [ "/run.sh" ]
+CMD [ "/bin/sh", "/run.sh" ]
