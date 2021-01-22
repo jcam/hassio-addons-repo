@@ -21,7 +21,7 @@ fi
 # default config
 FILE=/data/settings.json
 if [ ! -f "/data/settings.json" ]; then
-    mv /data/default_settings.json /data/settings.json
+    mv /default_settings.json /data/settings.json
 fi
 # update config
 jq -c '.zwave.port = "$SERIAL_PORT"' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
