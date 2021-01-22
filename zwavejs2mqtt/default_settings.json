@@ -1,0 +1,20 @@
+{
+    "mqtt": {
+        "disabled": true
+    },
+    "gateway": {
+        "type": 0,
+        "logEnabled": true,
+        "logLevel": "info",
+        "logToFile": false
+    },
+    "zwave": {
+        "port": "",
+        "commandsTimeout": 30,
+        "networkKey": "",
+        "logLevel": "info",
+        "logToFile": false,
+        "serverEnabled": true,
+        "serverPort": 3000
+    }
+}
