@@ -11,13 +11,11 @@
   "webui": "http://[HOST]:[PORT:8091]",
   "options": {
     "serial_port": "/dev/ttyACM0",
-    "network_key": "",
-    "use_dev_version": false
+    "network_key": ""
   },
   "schema": {
     "serial_port": "str",
-    "network_key": "str",
-    "use_dev_version": "bool"
+    "network_key": "str"
   },
   "ports": {
     "3000/tcp": 3000,
