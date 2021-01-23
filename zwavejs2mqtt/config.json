@@ -21,10 +21,10 @@
     "use_dev_version": "bool"
   },
   "ingress": true,
-  "ingress_port": 8092,
+  "ingress_port": 8091,
   "ports": {
     "3000/tcp": 3000,
-    "8091/tcp": null
+    "8091/tcp": 8091
   },
   "auto_uart": true
 }

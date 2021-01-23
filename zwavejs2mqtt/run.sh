@@ -23,7 +23,16 @@ fi
 # update config
 jq --arg a "${SERIAL_PORT}" '.zwave.port = $a' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
 jq --arg a "${NETWORK_KEY}" '.zwave.networkKey = $a' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
-sed -i "s/'store'/'$DATA_DIR'/g" config/app.js
 
-# node bin/www
-sh -c "nginx &" && node bin/www
+cat > config/app.js <<EOF
+
+module.exports = {
+  title: 'ZWave To MQTT',
+  storeDir: '$STORE_DIR',
+  base: '',
+  port: 8091
+}
+
+EOF 
+
+node bin/www
