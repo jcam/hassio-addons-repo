@@ -28,8 +28,8 @@ echo "writing config"
 echo -e "
 module.exports = { \n
     title: 'ZWave To MQTT', \n
-    storeDir: '$STORE_DIR', \n
-    base: '', \n
+    storeDir: '"$STORE_DIR"', \n
+    base: '/hassio/ingress/', \n
     port: 8091 \n
 }
 " > config/app.js
