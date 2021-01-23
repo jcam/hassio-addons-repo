@@ -26,13 +26,16 @@ jq --arg a "${NETWORK_KEY}" '.zwave.networkKey = $a' /data/settings.json > tmp.$
 
 cat > config/app.js <<EOF
 
-module.exports = {
-  title: 'ZWave To MQTT',
-  storeDir: '$STORE_DIR',
-  base: '',
-  port: 8091
-}
-
 EOF 
 
-node bin/www
+echo -e "
+module.exports = { \n
+    title: 'ZWave To MQTT', \n
+    storeDir: '$STORE_DIR', \n
+    base: '', \n
+    port: 8091 \n
+}
+" > config/app.js
+
+# start running
+exec node bin/www
