@@ -4,9 +4,6 @@ SERIAL_PORT=$(cat /data/options.json | jq -r '.serial_port')
 NETWORK_KEY=$(cat /data/options.json | jq -r '.network_key')
 USE_DEV=$(cat /data/options.json | jq -r '.use_dev_version')
 DATA_DIR=$(cat /data/options.json | jq -r '.data_dir')
-export NETWORK_KEY=$NETWORK_KEY
-export STORE_DIR=$DATA_DIR
-export SERIAL_PORT=$SERIAL_PORT
 
 echo "NETWORK_KEY=$NETWORK_KEY"
 echo "STORE_DIR=$DATA_DIR"
@@ -24,9 +21,9 @@ if [ ! -f "/data/settings.json" ]; then
     mv /default_settings.json /data/settings.json
 fi
 # update config
-jq -c '.zwave.port = "${SERIAL_PORT}"' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
-jq -c '.zwave.networkKey = "${NETWORK_KEY}"' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
+jq --arg a "${SERIAL_PORT}" '.zwave.port = $a' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
+jq --arg a "${NETWORK_KEY}" '.zwave.networkKey = $a' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
+sed -i "s/'store'/'$DATA_DIR'/g" config/app.js
 
 # node bin/www
-
-sh -c "nginx &" && STORE_DIR=$DATA_DIR node bin/www
+sh -c "nginx &" && node bin/www
