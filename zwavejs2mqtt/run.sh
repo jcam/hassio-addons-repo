@@ -24,10 +24,6 @@ fi
 jq --arg a "${SERIAL_PORT}" '.zwave.port = $a' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
 jq --arg a "${NETWORK_KEY}" '.zwave.networkKey = $a' /data/settings.json > tmp.$$.json && mv tmp.$$.json /data/settings.json
 
-cat > config/app.js <<EOF
-
-EOF 
-
 echo -e "
 module.exports = { \n
     title: 'ZWave To MQTT', \n
