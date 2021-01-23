@@ -29,4 +29,4 @@ jq -c '.zwave.networkKey = "${NETWORK_KEY}"' /data/settings.json > tmp.$$.json &
 
 # node bin/www
 
-sh -c "nginx &" && node bin/www
+sh -c "nginx &" && STORE_DIR=$DATA_DIR node bin/www
