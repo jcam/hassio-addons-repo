@@ -11,13 +11,11 @@
   "options": {
     "serial_port": "/dev/ttyACM0",
     "network_key": "",
-    "data_dir": "/data",
     "use_dev_version": false
   },
   "schema": {
     "serial_port": "str",
     "network_key": "str",
-    "data_dir": "str",
     "use_dev_version": "bool"
   },
   "ingress": true,

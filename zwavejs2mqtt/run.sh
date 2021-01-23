@@ -3,10 +3,8 @@
 SERIAL_PORT=$(cat /data/options.json | jq -r '.serial_port')
 NETWORK_KEY=$(cat /data/options.json | jq -r '.network_key')
 USE_DEV=$(cat /data/options.json | jq -r '.use_dev_version')
-DATA_DIR=$(cat /data/options.json | jq -r '.data_dir')
 
 echo "NETWORK_KEY=$NETWORK_KEY"
-echo "DATA_DIR=$DATA_DIR"
 echo "SERIAL_PORT=$SERIAL_PORT"
 
 # update to latest version from master if enabled
@@ -28,7 +26,7 @@ echo "writing config"
 echo -e "
 module.exports = { \n
     title: 'ZWave To MQTT', \n
-    storeDir: '$DATA_DIR', \n
+    storeDir: '/data', \n
     base: '', \n
     port: 8091 \n
 }
