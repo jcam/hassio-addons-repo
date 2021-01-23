@@ -6,7 +6,7 @@ USE_DEV=$(cat /data/options.json | jq -r '.use_dev_version')
 DATA_DIR=$(cat /data/options.json | jq -r '.data_dir')
 
 echo "NETWORK_KEY=$NETWORK_KEY"
-echo "STORE_DIR=$DATA_DIR"
+echo "DATA_DIR=$DATA_DIR"
 echo "SERIAL_PORT=$SERIAL_PORT"
 
 # update to latest version from master if enabled
@@ -28,8 +28,8 @@ echo "writing config"
 echo -e "
 module.exports = { \n
     title: 'ZWave To MQTT', \n
-    storeDir: '"$STORE_DIR"', \n
-    base: '/hassio/ingress/', \n
+    storeDir: '$DATA_DIR', \n
+    base: '', \n
     port: 8091 \n
 }
 " > config/app.js
