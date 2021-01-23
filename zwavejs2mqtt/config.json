@@ -8,6 +8,7 @@
   "arch": ["aarch64", "amd64", "armhf", "armv7", "i386"],
   "map": ["config:rw"],
   "boot": "auto",
+  "webui": "http://[HOST]:[PORT:8091]",
   "options": {
     "serial_port": "/dev/ttyACM0",
     "network_key": "",
@@ -18,8 +19,6 @@
     "network_key": "str",
     "use_dev_version": "bool"
   },
-  "ingress": true,
-  "ingress_port": 8091,
   "ports": {
     "3000/tcp": 3000,
     "8091/tcp": 8091
