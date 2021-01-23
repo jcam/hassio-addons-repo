@@ -4,9 +4,6 @@ SERIAL_PORT=$(cat /data/options.json | jq -r '.serial_port')
 NETWORK_KEY=$(cat /data/options.json | jq -r '.network_key')
 USE_DEV=$(cat /data/options.json | jq -r '.use_dev_version')
 
-echo "NETWORK_KEY=$NETWORK_KEY"
-echo "SERIAL_PORT=$SERIAL_PORT"
-
 # update to latest version from master if enabled
 if [ "$USE_DEV" = "true" ]; then
     echo "Update to latest dev version of Zwave JS 2 MQTT..."
