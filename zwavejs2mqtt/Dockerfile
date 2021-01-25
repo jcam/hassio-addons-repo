@@ -3,8 +3,8 @@ ARG BUILD_VERSION
 # TEMP: use this dev version as it fixes the data path from env
 FROM hikeit/zwavejs2mqtt:2secduration-rc1.5
 
-RUN apk update && \
-    apk add --no-cache jq
+#RUN apk update && \
+#    apk add --no-cache jq
 
 VOLUME /data
 ADD run.sh /
