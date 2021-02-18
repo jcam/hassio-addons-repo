@@ -1,6 +1,6 @@
 {
   "name": "Z-Wave JS 2 MQTT",
-  "version": "serverb6-6.4-colorlight",
+  "version": "master-prezooz-colorlight",
   "slug": "zwavejs2mqtt",
   "description": "Fully configurable Zwave to MQTT Gateway and Control Panel.",
   "url": "https://zwave-js.github.io/zwavejs2mqtt",
