@@ -1,7 +1,7 @@
 ARG BUILD_VERSION
 # FROM zwavejs/zwavejs2mqtt:$BUILD_VERSION
 # TEMP: use this dev version as it fixes the data path from env
-FROM hikeit/zwavejs2mqtt:master-prezooz-colorlight
+FROM hikeit/zwavejs2mqtt:master-master-2sec
 
 #RUN apk update && \
 #    apk add --no-cache jq
