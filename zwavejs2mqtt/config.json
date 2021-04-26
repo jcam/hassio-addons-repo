@@ -1,6 +1,6 @@
 {
   "name": "Z-Wave JS 2 MQTT",
-  "version": "master-6.6.1-2sec",
+  "version": "3.5-7.2.4-2sec",
   "slug": "zwavejs2mqtt",
   "description": "Fully configurable Zwave to MQTT Gateway and Control Panel.",
   "url": "https://zwave-js.github.io/zwavejs2mqtt",
